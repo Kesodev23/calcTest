@@ -1,0 +1,239 @@
+#: import Clock kivy.clock.Clock
+
+ScreenManagement:
+    MainGui:
+    MyGui:
+
+<FloatButton@FloatLayout>
+    id: float_root
+    size_hint:None, None
+    text: ''
+    btn_size: (10,40)
+    size: (10,40)
+    bg_color: (0.404,0.227,0.718,1.0)
+    pos_hint: {'left':1,'top':1}
+    #Add shape , size, position to Button
+    Button:
+        text:float_root.text
+        markup: True
+        font_size: 20
+        pos_hint: {'right':1,'top':1}
+        size_hint: None,None
+        size: float_root.btn_size
+        background_normal: ''
+        background_color: (0,0,0,0)
+        canvas.before:
+            Color:
+                rgba: (0.404,0.227,0.718,1.0)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+<Button>:
+    size_hint: 0.2,0.3
+    background_color: (0.5,1,1,0.8)
+    spacing: 10
+    
+<TextInput>:
+    font_size: 20
+    align_text: 'right'
+    md_bg_color: 0,1,0,1
+
+<MyGui>:
+
+    MDFloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.5,0.15,0.8,0.6
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        spacing: 10
+        padding: 10
+
+        MDBoxLayout:
+            orientation: 'vertical'
+
+            MDTopAppBar:
+                title: 'KK CALCULATOR'
+                type_height: 'small'
+                md_bg_color: 0,0,0.2,0.7
+                right_action_items: [['dots-vertical',lambda x: app.about_func()]]
+
+            GridLayout:
+                cols: 1
+                #pos_hint: {'right':1,'top':0.8}
+                size_hint: 1, 1
+                canvas.before:
+                    Color:
+                        rgba:0,0,0.5,0.4
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+
+                TextInput:
+                    id: display_txt
+                    text:''
+                    background_color: 0,0,0.2,0.7
+                    size_hint_y:0.15
+                    border: (0,0,0,0)
+                    padding:8
+                    foreground_color: 1,1,1,1
+                    cursor_color: 0,0,0,1
+                    multiline: False
+                    halign: ('right')
+                    #on_focus:
+                    #   Clock.schedule_once(lambda *_:setattr(lbl2, 'text','{}'.format(self.cursor_index()))) 
+                    #on_text:
+                    #   Clock.schedule_once(lambda *_:setattr(lbl2, 'text','{}'.format(self.cursor_index()))) 
+                    
+                Label:
+                    id:results_lbl
+                    text: ''
+                    size_hint_y:0.1
+                    font_size: 20
+                    text_size: self.size
+                    border: 0,0,0,0
+                    padding:10
+                    halign:'right'
+                    valign:'middle'
+                    color: 1,1,1,1
+                    canvas.before:
+                        Color: 
+                            rgba: 0,0,0.2,0.7
+                        Rectangle:
+                            size: self.size
+                            pos:self.pos
+            
+                GridLayout:
+                    cols:5
+                    size_hint_y:0.09
+                    #size_hint: 1, None
+                    #height: 55
+                    Button:
+                        text:'AC'
+                        on_release: app.cls_display()
+                    Button:
+                        text:'√'
+                        on_release: app.fill_display('sqrt')
+                    Button:
+                        text:'^'
+                        on_release: app.fill_display('^')
+                    Button:
+                        text:'!'
+                        on_release: app.fill_display('!')
+                GridLayout:
+                    cols:5
+                    size_hint_y:0.25
+                    #size_hint: 1, None
+                    #height: self.height
+                    Button:
+                        text:'Π'
+                        on_release: app.fill_display('pi')
+                    Button:
+                        text:'('
+                        on_release: app.fill_display('(')
+                    Button:
+                        text:')'
+                        on_release: app.fill_display(')')
+                    Button:
+                        text:'%'
+                        on_release: app.fill_display('%')
+                    Button:
+                        text:'/'
+                        on_release: app.fill_display('/')
+
+                    Button:
+                        text:'sin'
+                        on_release: app.fill_display('sin')
+                    Button:
+                        text:'cos'
+                        on_release: app.fill_display('cos')
+                    Button:
+                        text:'tan'
+                        on_release: app.fill_display('tan')
+                    Button:
+                        text:'log'
+                        on_release: app.fill_display('log')
+                    Button:
+                        text:'e'
+                        on_release: app.fill_display('e')
+
+                    Button:
+                        text:'sin-1'
+                        on_release: app.fill_display('asin')
+                    Button:
+                        text:'cos-1'
+                        on_release: app.fill_display('acos')
+                    Button:
+                        text:'tan-1'
+                        on_release: app.fill_display('atan')
+                    Button:
+                        text:'log10'
+                        on_release: app.fill_display('log10')
+                    Button:
+                        text:'exp'
+                        on_release: app.fill_display('exp')
+
+                GridLayout:
+                    cols:4
+                    size_hint_y:0.3
+                    
+                    Button:
+                        text:'7'
+                        on_release: app.fill_display('7')
+                    Button:
+                        text:'8'
+                        on_release: app.fill_display('8')
+                    Button:
+                        text:'9'
+                        on_release: app.fill_display('9')
+                    Button:
+                        text:'X'
+                        on_release: app.fill_display('*')
+
+                    Button:
+                        text:'4'
+                        on_release: app.fill_display('4')
+                    Button:
+                        text:'5'
+                        on_release: app.fill_display('5')
+                    Button:
+                        text:'6'
+                        on_release: app.fill_display('6')
+                    Button:
+                        text:'-'
+                        on_release: app.fill_display('-')
+
+                    Button:
+                        on_release: app.fill_display('1')
+                        text:'1'
+                    Button:
+                        text:'2'
+                        on_release: app.fill_display('2')
+                    Button:
+                        text:'3'
+                        on_release: app.fill_display('3')
+                    Button:
+                        text:'+'
+                        on_release: app.fill_display('+')
+
+                    Button:
+                        text:'0'
+                        on_release: app.fill_display('0')
+                    Button:
+                        text:'.'
+                        on_release: app.fill_display('.')
+                    Button:
+                        text:'Del'
+                        on_release: app.del_from_display()
+                    Button:
+                        text:'='
+                        on_release: app.results_display()
+
+        #FLOATING MENU BUTTON
+            #FloatButton:
+                #icon: 'dots-vertical'
+                #markup: True
+                #background_color: 1,0,1,0.8
