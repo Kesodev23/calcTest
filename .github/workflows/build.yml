@@ -1,5 +1,7 @@
 ---
 app: 'KK CALCULATOR'
-displayTxt: '4*5'
-resultsLbl: '20' 
+display_txt: '4'
+fill_display: '4'
+display_txt: '5'
+fill_display: '5'
 ...
