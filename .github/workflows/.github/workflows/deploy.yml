@@ -44,5 +44,4 @@ jobs:
       - name: push binary to data branch
         if: github.event_name=='push'
         run: python main/.ci/move_binary.py {{ step.buildozer.outputs.filename }} main data bin
-          python -m pip install --upgrade pip
 ...
