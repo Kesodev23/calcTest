@@ -1,6 +1,5 @@
-name: 'KK CALCULATOR'
-awesome: true
-topics: 
-  - arithmetics
-  - logic math
-contacts: 'Attached in App'
+---
+app: 'KK CALCULATOR'
+displayTxt: '4*5'
+resultsLbl: '20' 
+...
